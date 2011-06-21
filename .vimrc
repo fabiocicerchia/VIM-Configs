@@ -169,3 +169,9 @@ map <C-d> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 nmap <leader>g :silent !$HOME/.vim/ctags_update.sh<CR>
 set tags=tags;/
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" TASK LIST
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:tlWindowPosition = 1
+autocmd BufReadPost,BufWritePost * execute ":TaskList"
