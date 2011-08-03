@@ -173,5 +173,9 @@ set tags=tags;/
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " TASK LIST
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:tlWindowPosition = 1
-autocmd BufReadPost,BufWritePost * execute ":TaskList"
+"let g:tlWindowPosition = 1
+"autocmd BufReadPost,BufWritePost *.php,*.js,*.html,*.css,*.sh,*.xml,*.yml execute ":TaskList"
+
+set cursorline
+hi CursorLine ctermbg=Black
+hi LineNr ctermbg=White ctermfg=Black
