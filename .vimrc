@@ -33,6 +33,12 @@ set ts=4        "number of spaces a <Tab> in the text stands for
 set vb t_vb=""  "use a visual bell instead of beeping
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 80 WIDTH
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+match OverLength /\%81v.\+/
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " AUTOCOMPLETE
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
