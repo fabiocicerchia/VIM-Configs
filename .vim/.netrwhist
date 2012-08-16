@@ -1,3 +1,11 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =1
+let g:netrw_dirhist_cnt =9
 let g:netrw_dirhist_1='/home/fabio/www/sanraffaele/db_migration/file_to_move/porting'
+let g:netrw_dirhist_2='/etc/nginx/conf.d'
+let g:netrw_dirhist_3='/media/HTCWILDFIRE/fabiocicerchia.github.com/apps/api/logic'
+let g:netrw_dirhist_4='/home/fabio/Projects/neutrino/branches/namespace_conversion/library/Neutrino/Stats/Proxy/Builder'
+let g:netrw_dirhist_5='/home/fabio/Projects/neutrino/branches/namespace_conversion/tests/applications/worker-NotUnitTests'
+let g:netrw_dirhist_6='/home/fabio/Projects/neutrino/branches/namespace_conversion/library/Neutrino/Producer/Tracker'
+let g:netrw_dirhist_7='/home/fabio/Projects/neutrino/branches/namespace_conversion/library/Neutrino/Stats/Proxy/Builder'
+let g:netrw_dirhist_8='/home/fabio/Projects/neutrino/trunk/library/Neutrino/PumpTo'
+let g:netrw_dirhist_9='/home/fabio/Projects/neutrino/trunk/tests/stats2'

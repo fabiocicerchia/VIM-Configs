@@ -1,0 +1,1 @@
+vim-powerline/doc/Powerline.txt

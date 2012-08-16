@@ -1,7 +1,15 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " GVIM Settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set guifont=Monospace\ 9
+if has("gui_running")
+    set guifont=Ubuntu\ Mono\ 11
+    source ~/.vim/vim-powerline/plugin/Powerline.vim
+endif
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" VIM POWERLINE
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"let g:Powerline_symbols = 'fancy'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Syntax Highlight
@@ -26,11 +34,14 @@ set mouse=a     "list of flags for using the mouse
 set noeb        "ring the bell for error messages
 set nowrap      "long lines wrap
 set nu          "show the line number for each line
-set spl=en      "list of accepted languages
+set spl=en_gb   "list of accepted languages
 set sw=4        "number of spaces used for each step of (auto)indent
 set tenc=utf-8  "character encoding used by the terminal
 set ts=4        "number of spaces a <Tab> in the text stands for
-set vb t_vb=""  "use a visual bell instead of beeping
+set t_vb=""     "use no bell instead of beeping
+
+set cc=80,120   "colored columns
+highlight ColorColumn ctermbg=7
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " AUTOCOMPLETE
@@ -58,6 +69,14 @@ map <S-Left> :tabprevious<CR>
 map <S-Right> :tabnext<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" WINDOWS
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map <C-Up> :wincmd k<CR>
+map <C-Down> :wincmd j<CR>
+map <C-Left> :wincmd h<CR>
+map <C-Right> :wincmd l<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " TAG-LIST
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let Tlist_Use_Right_Window = 1
@@ -80,13 +99,14 @@ nmap <F10> :TlistToggle<CR>:NERDTreeToggle<CR><C-w><C-w>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " STATUS BAR
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l/%04L,%04v][%p%%]\ [LEN=%L]
+" TODO: Use the autocmd...
+set statusline=%F%m%r%h%w\ %=%{\"[ENC=\".(&fenc==\"\"?toupper(&enc):toupper(&fenc)).((exists(\"+bomb\")\ &&\ &bomb)?\"+B\":\"\").\"]\ \"}[FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l/%04L,%04v]\ [%02p%%]\ [LEN=%L]
 set laststatus=2
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " OTHER
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-:match errorMsg /\s\+$\|\%81v.\+/
+:match errorMsg /\s\+$/
 nmap <C-S> :%s/\s\+$//<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -173,9 +193,23 @@ set tags=tags;/
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " TASK LIST
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"let g:tlWindowPosition = 1
+let g:tlWindowPosition = 1
 "autocmd BufReadPost,BufWritePost *.php,*.js,*.html,*.css,*.sh,*.xml,*.yml execute ":TaskList"
 
 set cursorline
 hi CursorLine ctermbg=Black
 hi LineNr ctermbg=White ctermfg=Black
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" SVNDIFF
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:svndiff_autoupdate = 1
+let g:svndiff_one_sign_delete = 1
+hi DiffAdd      ctermfg=0 ctermbg=2 guibg='green'
+hi DiffDelete   ctermfg=0 ctermbg=1 guibg='red'
+hi DiffChange   ctermfg=0 ctermbg=3 guibg='yellow'
+" TODO: Add automatic loading
+noremap <F3> :call Svndiff("prev")<CR>
+noremap <F4> :call Svndiff("next")<CR>
+noremap <F5> :call Svndiff("clear")<CR> 
+autocmd BufReadPost *.* call Svndiff("prev")
