@@ -9,7 +9,7 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " VIM POWERLINE
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"let g:Powerline_symbols = 'fancy'
+let g:Powerline_symbols = 'fancy'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Syntax Highlight
@@ -20,28 +20,79 @@ syntax on
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " SETTINGS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set acd         "change to directory of file in buffer
-set ai          "automatically set the indent of a new line
-set ar          "automatically read a file when it was modified outside of Vim
-set enc=utf-8   "character encoding used in Vim: 'latin1', 'utf-8', 'euc-jp', 'big5', etc.
-set et          "expand <Tab> to spaces in Insert mode
-set fdm=marker  "folding type: 'manual', 'indent', 'expr', 'marker' or 'syntax'
-set fen         "set to display all folds open
-set fenc=utf-8  "character encoding for the current file
-set hi=20		"how many command lines are remembered
-set hls         "highlight all matches for the last used search pattern
-set mouse=a     "list of flags for using the mouse
-set noeb        "ring the bell for error messages
-set nowrap      "long lines wrap
-set nu          "show the line number for each line
-set spl=en_gb   "list of accepted languages
-set sw=4        "number of spaces used for each step of (auto)indent
-set tenc=utf-8  "character encoding used by the terminal
-set ts=4        "number of spaces a <Tab> in the text stands for
-set t_vb=""     "use no bell instead of beeping
-
-set cc=80,120   "colored columns
+set acd         " Change to directory of file in buffer
+set ai          " Automatically set the indent of a new line
+set ar          " Automatically read a file when it was modified outside of Vim
+set enc=utf-8   " Character encoding used in Vim: 'latin1', 'utf-8', 'euc-jp', 'big5', etc.
+set et          " Expand <Tab> to spaces in Insert mode
+set fdm=marker  " Folding type: 'manual', 'indent', 'expr', 'marker' or 'syntax'
+set fen         " Set to display all folds open
+set fenc=utf-8  " Character encoding for the current file
+set hi=20       " How many command lines are remembered
+set hls         " Highlight all matches for the last used search pattern
+set mouse=a     " List of flags for using the mouse
+set noeb        " Ring the bell for error messages
+set nowrap      " Long lines wrap
+set nu          " Show the line number for each line
+set spl=en_gb   " List of accepted languages
+set sw=4        " Number of spaces used for each step of (auto)indent
+set tenc=utf-8  " Character encoding used by the terminal
+set ts=4        " Number of spaces a <Tab> in the text stands for
+set t_vb=""     " Use no bell instead of beeping
+set cc=80,120   " Colored columns
+set nocp        " Be iMproved
+set cursorline
+hi CursorLine ctermbg=Black
+hi LineNr ctermbg=White ctermfg=Black
 highlight ColorColumn ctermbg=7
+
+"filetype off                   " required!
+filetype plugin indent on     " required!
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" BUNDLES
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Brief help
+" :BundleList          - list configured bundles
+" :BundleInstall(!)    - install(update) bundles
+" :BundleSearch(!) foo - search(or refresh cache first) for foo
+" :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
+"
+" see :h vundle for more details or wiki for FAQ
+" NOTE: comments after Bundle command are not allowed..
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" let Vundle manage Vundle
+" required!
+Bundle 'gmarik/vundle'
+
+" My Bundles here:
+"
+" original repos on github
+Bundle 'tpope/vim-fugitive'
+Bundle 'Lokaltog/vim-easymotion'
+Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
+"Bundle 'tpope/vim-rails.git'
+" vim-scripts repos
+"Bundle 'L9'
+"Bundle 'FuzzyFinder'
+" non github repos
+"Bundle 'git://git.wincent.com/command-t.git'
+" ...
+Bundle 'tobyS/pdv'
+Bundle 'tobyS/vmustache'
+Bundle 'SirVer/ultisnips'
+Bundle 'Lokaltog/vim-powerline'
+Bundle 'jakobwesthoff/whitespacetrail'
+Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'vim-scripts/genutils'
+Bundle 'ervandew/supertab'
+Bundle 'vim-scripts/svndiff'
+Bundle 'vim-scripts/taglist.vim'
+Bundle 'vim-scripts/TaskList.vim'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " AUTOCOMPLETE
@@ -113,34 +164,9 @@ nmap <C-S> :%s/\s\+$//<CR>
 " PHP Utilities
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Folding shortcuts
-autocmd FileType php set ts=2
+"autocmd FileType php set ts=2
 autocmd FileType php map <S-f><S-o> O// {{{
 autocmd FileType php map <S-f><S-c> o// }}}
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" PHP-DOC
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:pdv_cfg_CommentHead = "/**"
-let g:pdv_cfg_Comment1 = " * "
-let g:pdv_cfg_Commentn = " * "
-let g:pdv_cfg_CommentTail = " */"
-let g:pdv_cfg_CommentSingle = "//"
-
-" Default values
-let g:pdv_cfg_Type="mixed"
-let g:pdv_cfg_Package=""
-let g:pdv_cfg_Version=""
-let g:pdv_cfg_Author="Fabio Cicerchia <f.cicerchia@dnsee.com>"
-let g:pdv_cfg_Copyright="Copyright (C) DNSEE"
-let g:pdv_cfg_License="No License Used"
-
-autocmd FileType php inoremap <C-P> :call PhpDocSingle()<CR>i
-autocmd FileType php nnoremap <C-P> :call PhpDocSingle()<CR>
-autocmd FileType php vnoremap <C-P> :call PhpDocRange()<CR>
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" PHP Utilities
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " run file with PHP CLI (CTRL-M)
 autocmd FileType php noremap <C-E> :w!<CR>:!/usr/bin/php5 %<CR>
 " PHP parser check (CTRL-L)
@@ -154,6 +180,12 @@ function! ParserCheck()
         echomsg "No syntax errors detected"
     end
 endfun
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" PDV
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:pdv_template_dir = $HOME ."/.vim/bundle/pdv/templates_snip"
+nnoremap <buffer> <C-p> :call pdv#DocumentWithSnip()<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " C Utilities
@@ -196,10 +228,6 @@ set tags=tags;/
 let g:tlWindowPosition = 1
 "autocmd BufReadPost,BufWritePost *.php,*.js,*.html,*.css,*.sh,*.xml,*.yml execute ":TaskList"
 
-set cursorline
-hi CursorLine ctermbg=Black
-hi LineNr ctermbg=White ctermfg=Black
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " SVNDIFF
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -211,5 +239,5 @@ hi DiffChange   ctermfg=0 ctermbg=3 guibg='yellow'
 " TODO: Add automatic loading
 noremap <F3> :call Svndiff("prev")<CR>
 noremap <F4> :call Svndiff("next")<CR>
-noremap <F5> :call Svndiff("clear")<CR> 
+noremap <F5> :call Svndiff("clear")<CR>
 autocmd BufReadPost *.* call Svndiff("prev")
