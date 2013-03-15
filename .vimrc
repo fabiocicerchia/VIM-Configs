@@ -29,7 +29,7 @@ set fdm=marker  " Folding type: 'manual', 'indent', 'expr', 'marker' or 'syntax'
 set fen         " Set to display all folds open
 set fenc=utf-8  " Character encoding for the current file
 set hi=20       " How many command lines are remembered
-set hls         " Highlight all matches for the last used search pattern
+set nohls       " Don't highlight all matches for the last used search pattern
 set mouse=a     " List of flags for using the mouse
 set noeb        " Ring the bell for error messages
 set nowrap      " Long lines wrap
@@ -41,10 +41,11 @@ set ts=4        " Number of spaces a <Tab> in the text stands for
 set t_vb=""     " Use no bell instead of beeping
 set cc=80,120   " Colored columns
 set nocp        " Be iMproved
+set is          " Incremental Search
 set cursorline
 hi CursorLine ctermbg=Black
 hi LineNr ctermbg=White ctermfg=Black
-highlight ColorColumn ctermbg=7
+highlight ColorColumn ctermbg=0
 
 "filetype off                   " required!
 filetype plugin indent on     " required!
