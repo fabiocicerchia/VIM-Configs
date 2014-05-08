@@ -39,7 +39,7 @@ set sw=4        " Number of spaces used for each step of (auto)indent
 set tenc=utf-8  " Character encoding used by the terminal
 set ts=4        " Number of spaces a <Tab> in the text stands for
 set t_vb=""     " Use no bell instead of beeping
-set cc=80,120   " Colored columns
+"set cc=80,120   " Colored columns
 set nocp        " Be iMproved
 set is          " Incremental Search
 set cursorline
@@ -238,7 +238,7 @@ hi DiffAdd      ctermfg=0 ctermbg=2 guibg='green'
 hi DiffDelete   ctermfg=0 ctermbg=1 guibg='red'
 hi DiffChange   ctermfg=0 ctermbg=3 guibg='yellow'
 " TODO: Add automatic loading
-noremap <F3> :call Svndiff("prev")<CR>
-noremap <F4> :call Svndiff("next")<CR>
-noremap <F5> :call Svndiff("clear")<CR>
-autocmd BufReadPost *.* call Svndiff("prev")
+"noremap <F3> :call Svndiff("prev")<CR>
+"noremap <F4> :call Svndiff("next")<CR>
+"noremap <F5> :call Svndiff("clear")<CR>
+"autocmd BufReadPost *.* call Svndiff("prev")
