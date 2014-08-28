@@ -42,6 +42,7 @@ set t_vb=""     " Use no bell instead of beeping
 "set cc=80,120   " Colored columns
 set nocp        " Be iMproved
 set is          " Incremental Search
+set tabpagemax=99999
 set cursorline
 hi CursorLine ctermbg=Black
 hi LineNr ctermbg=White ctermfg=Black
@@ -92,18 +93,18 @@ map <C-s> :shell<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " TABS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <S-Up> :tabnew<CR>
-map <S-Down> :tabclose<CR>
-map <S-Left> :tabprevious<CR>
-map <S-Right> :tabnext<CR>
+map <S-n> :tabnew<CR>
+map <S-d> :tabclose<CR>
+map <F7> :tabprevious<CR>
+map <F8> :tabnext<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " WINDOWS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <C-Up> :wincmd k<CR>
-map <C-Down> :wincmd j<CR>
-map <C-Left> :wincmd h<CR>
-map <C-Right> :wincmd l<CR>
+"map <C-Up> :wincmd k<CR>
+"map <C-Down> :wincmd j<CR>
+"map <C-Left> :wincmd h<CR>
+"map <C-Right> :wincmd l<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " TAG-LIST
