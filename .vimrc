@@ -94,7 +94,7 @@ map <C-s> :shell<CR>
 " TABS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <S-n> :tabnew<CR>
-map <S-d> :tabclose<CR>
+map <S-q> :tabclose<CR>
 map <F7> :tabprevious<CR>
 map <F8> :tabnext<CR>
 
